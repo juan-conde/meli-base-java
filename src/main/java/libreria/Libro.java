@@ -1,5 +1,7 @@
 package libreria;
 
+import java.util.Objects;
+
 public abstract class Libro {
 
     private String titulo;
@@ -32,5 +34,18 @@ public abstract class Libro {
 
     public void setAlquilado(Boolean alquilado) {
         this.alquilado = alquilado;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Libro libro = (Libro) o;
+        return titulo.equals(libro.titulo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo);
     }
 }

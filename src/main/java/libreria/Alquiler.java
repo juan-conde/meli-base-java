@@ -4,16 +4,16 @@ import java.time.LocalDateTime;
 
 public class Alquiler {
 
-    private Alquilable libroAlquilado;
+    private Alquilable alquilado;
     private LocalDateTime fechaAlquiler;
     private LocalDateTime fechaDevolucion;
 
-    public Alquilable getLibroAlquilado() {
-        return libroAlquilado;
+    public Alquilable getAlquilado() {
+        return alquilado;
     }
 
-    public void setLibroAlquilado(Alquilable libroAlquilado) {
-        this.libroAlquilado = libroAlquilado;
+    public void setAlquilado(Alquilable alquilado) {
+        this.alquilado = alquilado;
     }
 
     public LocalDateTime getFechaAlquiler() {
@@ -31,4 +31,15 @@ public class Alquiler {
     public void setFechaDevolucion(LocalDateTime fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
+
+    @Override
+    public String toString() {
+        return "Alquiler : { " +
+                "alquilado = " + alquilado +
+                ", fechaAlquiler = " + fechaAlquiler +
+                '}';
+    }
+
+
+
 }

@@ -26,4 +26,8 @@ public class LibroEstudio extends Libro implements Alquilable {
         this.temaDeEstudio = temaDeEstudio;
     }
 
+    @Override
+    public String toString() {
+        return this.getTitulo();
+    }
 }

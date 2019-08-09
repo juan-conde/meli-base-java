@@ -35,4 +35,9 @@ public class LibroNovela extends Libro implements Alquilable {
     public void setEdicion(String edicion) {
         this.edicion = edicion;
     }
+
+    @Override
+    public String toString() {
+        return this.getTitulo();
+    }
 }

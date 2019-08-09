@@ -32,21 +32,16 @@ public class Libreria {
 
     public void agregarAlquiler(Alquiler alquiler){
         alquileres.add(alquiler);
-        alquiler.getLibroAlquilado().alquilar();
+        alquiler.getAlquilado().alquilar();
     }
 
-    public Alquiler buscarAlquiler(Libro libroABuscar){
+    public Predicate<Alquiler> getPredicate(Alquilable alquilable){
+        return alquiler -> alquiler.getAlquilado().equals(alquilable);
+    }
 
-//        Predicate<Alquiler> buscarLibroporAlquiler =
-//                alquiler -> alquiler.getLibroAlquilado().getTitulo().equals(libroABuscar.getTitulo());
-        Predicate<Alquiler> buscarLibroporAlquiler =
-                alquiler -> {
-                    Libro libroAlquilado = (Libro) alquiler.getLibroAlquilado();
-                    return libroAlquilado.getTitulo().equals(libroABuscar.getTitulo());
-                };
+    public Alquiler buscarAlquiler(Alquilable alquilable){
 
-        List<Alquiler> collect = alquileres.stream().filter(buscarLibroporAlquiler).collect(Collectors.toList());
-
+        List<Alquiler> collect = alquileres.stream().filter(getPredicate(alquilable)).collect(Collectors.toList());
         if(collect.isEmpty()){
             throw new AlquilerNoEncontradoException("El alquiler buscado no se encuentra en la Libreria.");
         } else {
@@ -55,13 +50,7 @@ public class Libreria {
     }
 
     public void listarAlquileres(){
-//        Consumer<Alquiler> imprimirAlquileres = alquiler -> System.out.println(
-//                alquiler.getLibroAlquilado().getTitulo() + " - " + alquiler.getFechaAlquiler() + '\n' );
-        Consumer<Alquiler> imprimirAlquileres = alquiler -> {
-            Libro libroAlquilado = (Libro) alquiler.getLibroAlquilado();
-            System.out.println(libroAlquilado.getTitulo() + " - " + alquiler.getFechaAlquiler());
-        };
-
+        Consumer<Alquiler> imprimirAlquileres = alquiler -> System.out.println(alquiler);
         alquileres.stream().forEach(imprimirAlquileres);
     }
 }

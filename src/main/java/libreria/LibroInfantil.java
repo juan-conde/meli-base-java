@@ -20,4 +20,9 @@ public class LibroInfantil extends Libro {
     public void setEdadHasta(Integer edadHasta) {
         this.edadHasta = edadHasta;
     }
+
+    @Override
+    public String toString() {
+        return this.getTitulo();
+    }
 }
