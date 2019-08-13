@@ -1,5 +1,4 @@
 language: java
-install:
-  - gem uninstall bundler
-  - gem install bundler --version '1.7.4'
-script: "rake"
+jdk:
+  - oraclejdk12
+script: "mvn clean install"
